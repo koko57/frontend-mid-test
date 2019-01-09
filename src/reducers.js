@@ -1,15 +1,31 @@
-/**
- * Created by gitsad on 05.01.17.
- */
 import { combineReducers } from 'redux';
 
-const reducerToDelete = (state = {}, action) => {
-    switch(action.type) {
-        default:
-            return state;
-    }
+const initialState = {
+  houses: []
+};
+
+const housesReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'GET_HOUSES':
+      return {
+        ...state,
+        houses: action.payload
+      };
+    case 'ADD_HOUSE':
+      return {
+        ...state,
+        houses: [action.payload, ...state.houses]
+      };
+    case 'DELETE_HOUSE':
+      return {
+        ...state,
+        houses: state.houses.filter(house => house._id !== action.payload)
+      };
+    default:
+      return state;
+  }
 };
 
 export default combineReducers({
-    reducerToDelete,
+  houses: housesReducer
 });

@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Navbar from '../../components/Navbar';
 
-class HousesList extends Component {
+class Details extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         details
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapDispatchToProps = dispatch => ({});
 
-const mapDispatchToProps = {
-  
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HousesList)
+export default connect(
+  null,
+  mapDispatchToProps
+)(Details);
