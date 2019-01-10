@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { deleteHouse } from '../actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 class House extends Component {
   render() {
     const { address, price, owner, area, houseId } = this.props;
     return (
       <div>
-        <p>{address}</p>
+        <Link to={`/house/${houseId}`}>{address}</Link>
         <p>{price}</p>
         <p>{owner}</p>
         <p>{area}</p>

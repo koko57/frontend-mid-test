@@ -1,0 +1,11 @@
+@import '../../styles/mixins/mixins.scss';
+
+.house-info {
+    margin: auto;
+    max-width: 30rem;
+    border: 1 px solid goldenrod;
+    padding: 3rem;
+    @include flexbox;
+    @include flex-direction(column);
+
+}
