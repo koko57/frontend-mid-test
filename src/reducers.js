@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-  houses: []
+  houses: [],
+  currentHouse: {}
 };
 
 const housesReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const housesReducer = (state = initialState, action) => {
         ...state,
         houses: action.payload
       };
+    case 'GET_CURRENT_HOUSE':
+      return {
+        ...state,
+        currentHouse: state.houses.find(house => house._id === action.payload)
+      };
     case 'ADD_HOUSE':
       return {
         ...state,
@@ -19,7 +25,7 @@ const housesReducer = (state = initialState, action) => {
     case 'DELETE_HOUSE':
       return {
         ...state,
-        houses: state.houses.filter(house => house._id !== action.payload)
+        houses: [state.houses.filter(house => house._id !== action.payload)]
       };
     default:
       return state;
