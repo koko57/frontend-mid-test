@@ -1,28 +1,33 @@
 @import '../../styles/mixins/mixins.scss';
 
-.details-page {
-  height: 100vh;
-  width: 100%;
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(center);
-}
-
-.house-info {
+.house-creator {
   position: relative;
-  width: 20rem;
-  height: 25rem;
+  top: 6rem;
+  width: 60vw;
+  max-width: 30rem;
+  margin: 5rem auto;
   padding: 3rem;
-  border: 1px solid rgb(218, 165, 32);
   @include flexbox();
   @include flex-direction(column);
   @include align-items(center);
-  @include justify-content(space-between);
-  &__details {
-    width: 80%;
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(2, auto);
-    grid-gap: 0.35rem;
+  @include justify-content(center);
+  &__input {
+    width: 90%;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgb(218, 165, 32);
+    line-height: 1.2rem;
+    font-size: 1rem;
+    &:last-of-type {
+      margin-bottom: 2.5rem;
+    }
+    &:focus {
+      outline: none;
+      border-color: rgb(65, 105, 225);
+    }
+    &::placeholder {
+      color: #9a9a9a;
+    }
   }
   &__button {
     appearance: none;

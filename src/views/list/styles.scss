@@ -1,0 +1,16 @@
+@import '../../styles/mixins/mixins.scss';
+
+.list-wrapper {
+  width: 100%;
+  position: relative;
+  top: 6rem;
+}
+
+.houses-list {
+  list-style: none;
+  padding: 0 3rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-rows: repeat(auto-fill);
+  align-content: center;
+}

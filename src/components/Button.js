@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Button.scss';
 
-const Button = ({link, text}) => {
+const Button = ({ link, text, small }) => {
   return (
-    <div className="button">
-      <a href={link}>{text}</a>
-    </div>
-  )
-}
+    <Link
+      to={link}
+      className={small ? 'button button--small' : 'button'}
+      tabIndex="0"
+    >
+      {text}
+    </Link>
+  );
+};
 
-export default Button
+export default Button;

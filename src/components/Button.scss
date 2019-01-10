@@ -1,16 +1,25 @@
 @import '../styles/mixins/mixins.scss';
-@import '../styles/main.scss';
 
 .button {
-  border: 1px solid royalblue;
-  padding: 1rem 2rem;
-  &:hover, &:hover a {
-    border-color: goldenrod;
-    color: goldenrod;
+  border: 1px solid rgb(65, 105, 225);
+  padding: 1rem 2.2rem;
+  margin: 3rem auto 4rem;
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: rgb(65, 105, 225);
+  &:hover {
+    border-color: rgb(218, 165, 32);
+    color: rgb(218, 165, 32);
   }
-
-  a {
-    text-transform: uppercase;
-    color: royalblue;
+  &--small {
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem auto;
+    text-align: center;
+    width: 8rem;
+  }
+  @media screen and (max-width: 480px) {
+    margin: 1rem auto 2rem;
+    padding: 0.8rem 1.5rem;
   }
 }

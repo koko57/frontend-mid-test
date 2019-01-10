@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addHouse } from '../../actions';
 import Navbar from '../../components/Navbar';
+import './styles.scss';
 
 class CreateHouse extends Component {
   state = {
@@ -28,16 +29,18 @@ class CreateHouse extends Component {
       owner: '',
       area: ''
     });
+    this.props.history.push('/list');
   };
   render() {
     const { address, price, owner, area } = this.state;
     return (
       <div>
         <Navbar />
-        <div>
-          <form onSubmit={this.handleSubmit}>
+        <div className="form-wrapper">
+          <form onSubmit={this.handleSubmit} className="house-creator">
             <input
               type="text"
+              className="house-creator__input"
               name="address"
               id="address"
               placeholder="address"
@@ -46,6 +49,7 @@ class CreateHouse extends Component {
             />
             <input
               type="text"
+              className="house-creator__input"
               name="price"
               id="price"
               placeholder="price"
@@ -54,6 +58,7 @@ class CreateHouse extends Component {
             />
             <input
               type="text"
+              className="house-creator__input"
               name="owner"
               id="owner"
               placeholder="owner"
@@ -62,13 +67,14 @@ class CreateHouse extends Component {
             />
             <input
               type="number"
+              className="house-creator__input"
               name="area"
               id="area"
               placeholder="area"
               onChange={this.handleChange}
               value={area}
             />
-            <button type="submit">Submit</button>
+            <button type="submit" className="house-creator__button">Submit</button>
           </form>
         </div>
       </div>

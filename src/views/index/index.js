@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import './styles.scss';
 
-class Index extends React.Component {
+class Index extends Component {
   render() {
     return (
-      <div className="index-layout">
+      <Fragment>
         <Navbar />
+        <section id="top">
+          <span className="top">top</span>
+        </section>
         <div className="wrapper">
           <section id="about" className="section section--about">
-            <h2>About us</h2>
-            <Button link={'#'} text="More about us" />
+            <h2>About</h2>
+            <Button link={'/list'} text="Our houses" />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
               nulla sed fugiat nam nesciunt rerum voluptas possimus? Eius, harum
@@ -23,27 +26,33 @@ class Index extends React.Component {
             <div className="gallery__item gallery__item--text"> logo </div>
             <div className="gallery__item gallery__item--pic1" />
             <div className="gallery__item gallery__item--pic2" />
-            <div className="gallery__item gallery__item--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime molestiae.</div>
+            <div className="gallery__item gallery__item--text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+              molestiae.
+            </div>
           </section>
           <section id="services" className="section section--services">
-            <h3>budujemy</h3>
-            <h3>remontujemy</h3>
-            <h3>okna</h3>
-            <h3>drzwi</h3>
-            <h3>inne</h3>
+            <h3>Houses</h3>
+            <h3>Apartaments</h3>
+            <h3>Rooms</h3>
+            <h3>Buy</h3>
+            <h3>Rent</h3>
           </section>
           <section id="offer" className="section section--offer">
-            <h2>Oferta</h2>
+            <h2>Offer</h2>
+            <Button link={'/create'} text="Create new" />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
               nulla sed fugiat nam nesciunt rerum voluptas possimus? Eius, harum
               exercitationem! Animi saepe laboriosam dignissimos velit
               voluptatibus unde soluta voluptas doloremque?
             </p>
-            <Button link={'#'} text="Zobacz pełną ofertę" />
           </section>
         </div>
-      </div>
+        <div className="footer">
+          <a href="#top">Back to top</a>
+        </div>
+      </Fragment>
     );
   }
 }

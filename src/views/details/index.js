@@ -1,23 +1,40 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../../components/Navbar';
-import { getCurrentHouse } from '../../actions';
+import { getHouses, getCurrentHouse, deleteHouse } from '../../actions';
+import './styles.scss';
 
 class Details extends Component {
-  componentDidMount() {
-    this.props.getHouseDetails();
+  async componentDidMount() {
+    await this.props.getHouse(this.props.location.pathname.slice(7));
+    console.log(this.props.location);
   }
+  handleClick = e => {
+    this.props.delete(this.props.location.pathname.slice(7));
+    this.props.history.push('/list');
+  };
   render() {
     const { house } = this.props;
-    console.log(house)
     return (
       <Fragment>
         <Navbar />
-        <div className="house-info">
-          <h2>{house.address}</h2>
-          <p>{house.price}</p>
-          <p>{house.owner}</p>
-          <p>{house.area}</p>
+        <div className="details-page">
+          <div className="house-info">
+            <h2>{house.address}</h2>
+            <div className="house-info__details">
+              <span>price:</span>
+              <span>{house.price}</span>
+
+              <span>owner:</span>
+              <span>{house.owner}</span>
+
+              <span>area:</span>
+              <span>{house.area}</span>
+            </div>
+            <button className="house-info__button" onClick={this.handleClick}>
+              Delete
+            </button>
+          </div>
         </div>
       </Fragment>
     );
@@ -30,12 +47,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log(ownProps);
-  return {
-    getHouseDetails: () => dispatch(getCurrentHouse(ownProps.match.params.id))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getHouses: () => dispatch(getHouses()),
+  getHouse: id => dispatch(getCurrentHouse(id)),
+  delete: id => dispatch(deleteHouse(id))
+});
 
 export default connect(
   mapStateToProps,

@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
-import { deleteHouse } from '../actions';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import Button from './Button';
+import './House.scss';
 
 class House extends Component {
   render() {
-    const { address, price, owner, area, houseId } = this.props;
+    const { address, houseId } = this.props;
     return (
-      <div>
-        <Link to={`/house/${houseId}`}>{address}</Link>
-        <p>{price}</p>
-        <p>{owner}</p>
-        <p>{area}</p>
-        <button onClick={() => this.props.delete(houseId)}>Delete</button>
+      <div className="house">
+        <h3>{address}</h3>
+          <Button link={`/house/${houseId}`} text="Details" small />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  delete: id => dispatch(deleteHouse(id))
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(House);
+export default House

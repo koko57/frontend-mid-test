@@ -1,40 +1,95 @@
 @import '../../styles/mixins/mixins.scss';
 
+.top {
+  visibility: hidden;
+}
 .wrapper {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template: repeat(2, calc((100vw - 3rem) / 2)) / 1fr 1fr;
-  margin-top: 6rem;
+  grid-template: repeat(2, calc((100vw - 2rem) / 2)) / 1fr 1fr;
+  margin-top: 5rem;
+  @media screen and (max-width: 1024px) {
+    grid-template: 80vh 100vw 80vh 80vh / 1fr;
+  }
+  @media screen and (max-width: 480px) {
+    grid-template: repeat(4, auto) / 1fr;
+  }
 }
-
 .section {
+  h2 {
+    text-transform: uppercase;
+  }
   &:not(.section--gallery) {
-    padding: 3rem;
     @include flexbox();
     @include flex-direction(column);
-    @include justify-content(space-evenly);
+    @include justify-content(center);
     @include align-items(center);
-    border: 1px solid #3f3f3f;
+    @media screen and (max-width: 480px) {
+      padding: 3rem;
+      font-size: 0.9em;
+    }
+  }
+  &--about,
+  &--offer {
+    padding: 0 5rem 5rem;
+  }
+  &--services {
+    padding: 5rem 5rem;
+    color: #ddd;
+    background-color: rgb(65, 105, 225);
+    h3 {
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
   }
   &--gallery {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template: repeat(2, 50%) / repeat(2, 50%);
+    @media screen and (max-width: 480px) {
+      grid-template: repeat(4, 100vw) / 1fr;
+    }
     .gallery__item {
-      border: 1px solid #ddd;
       &[class*='pic'] {
         background-size: cover;
-        border: 2px solid red;
         filter: saturate(0.2);
       }
       &--pic1 {
         background-image: url('https://images.unsplash.com/photo-1529008922463-fd89b925364e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+        @media screen and (max-width: 480px) {
+          grid-row: 2 / 3;
+        }
       }
       &--pic2 {
         background-image: url('https://images.unsplash.com/photo-1463082459669-fd1ca1692fea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');
+        @media screen and (max-width: 480px) {
+          grid-row: 4 / 5;
+        }
       }
+      &--text {
+        background-color: rgb(65, 105, 225);
+        color: #ddd;
+        padding: 2rem;
+        @include flexbox();
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include align-items(center);
+      }
+    }
+  }
+}
+.footer {
+  display: none;
+  @media screen and (max-width: 1024px) {
+    display: block;
+    background-color: rgb(65, 105, 225);
+    padding: 1rem 3rem;
+    text-align: right;
+    a {
+      color: #ddd;
     }
   }
 }

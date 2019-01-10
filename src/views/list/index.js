@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getHouses } from '../../actions';
 import House from '../../components/House';
 import Navbar from '../../components/Navbar';
+import './styles.scss';
 
 class HousesList extends Component {
   componentDidMount() {
@@ -21,12 +22,12 @@ class HousesList extends Component {
       </li>
     ));
     return (
-      <div>
+      <Fragment>
         <Navbar />
-        <div>
-          <ul>{houses}</ul>
+        <div className="list-wrapper">
+          <ul className="houses-list">{houses}</ul>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
