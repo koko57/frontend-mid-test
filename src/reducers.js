@@ -15,7 +15,7 @@ const housesReducer = (state = initialState, action) => {
     case 'GET_CURRENT_HOUSE':
       return {
         ...state,
-        currentHouse: state.houses.find(house => house._id === action.payload)
+        currentHouse: action.payload
       };
     case 'ADD_HOUSE':
       return {
@@ -25,7 +25,7 @@ const housesReducer = (state = initialState, action) => {
     case 'DELETE_HOUSE':
       return {
         ...state,
-        houses: [state.houses.filter(house => house._id !== action.payload)]
+        houses: state.houses.filter(house => house._id !== action.payload)
       };
     default:
       return state;

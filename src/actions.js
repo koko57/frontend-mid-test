@@ -9,10 +9,10 @@ export const getHouses = () => dispatch => {
   });
 };
 export const getCurrentHouse = id => dispatch => {
-  axios.get(`http://mr-test-backend.sadek.usermd.net/houses/${id}`).then(() => {
+  axios.get(`http://mr-test-backend.sadek.usermd.net/houses/${id}`).then(res => {
     dispatch({
       type: 'GET_CURRENT_HOUSE',
-      payload: id
+      payload: res.data
     });
   });
 };
